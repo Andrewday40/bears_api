@@ -14,10 +14,15 @@ db.defaults({bears: []})
   .value();
 
 server.get('/bears', function(request, response){
+  var bears = db.get('bears')
+                .value();
   response.send(bears);
 });
 
 server.get('/bears/:id', function(request, response){
+  var bear = db.get('bears')
+               .find({id: request.params.id})
+               .value();
   response.send(bear);
 });
 
