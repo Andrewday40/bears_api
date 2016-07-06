@@ -46,13 +46,29 @@ server.post('/bears', function(request, response){
 });
 
 server.put('/bears/:id', function(request, response){
-  response.send(updatedbear);
+  var updatedBearInfo = {
+    size: request.body.size,
+    color: request.body.color,
+    isAwake: request.body.isAwake,
+    hasKids: request.body.hasKids,
+    type: request.body.type,
+    isHungry: request.body.isHungry,
+    notes: request.body.notes
+  };
+  var updatedBear = db.get('bears')
+                      .find({id: request.params.id})
+                      .assign(updatedBearInfo)
+                      .value();
+  response.send(updatedBear);
 });
 
 server.delete('/bears/:id', function(request, response){
+  var bear = db.get('bears')
+               .remove ({id: request.params.id})
+               .value();
   response.send(bear)
 })
 
 server.listen(port, function(){
-  console.log('Now listening to port:..', port);
+  console.log('Now listening on port:', port);
 });
