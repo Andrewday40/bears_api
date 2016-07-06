@@ -1,0 +1,14 @@
+{
+  "bears": [
+    {
+      "id": "020a8f8c-633e-4c2d-ba24-3a7f4b6e8ccf",
+      "size": "BIG",
+      "color": "brown",
+      "isAwake": false,
+      "hasKids": false,
+      "type": "angry",
+      "isHungry": false,
+      "notes": "HELP!!!!!!!!"
+    }
+  ]
+}
