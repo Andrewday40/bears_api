@@ -8,6 +8,15 @@
       "isAwake": true,
       "hasKids": false,
       "isHungry": false
+    },
+    {
+      "id": "8923959c-3053-4aae-b82a-d57d2e9d4b78",
+      "size": "small",
+      "type": "black",
+      "location": "village",
+      "isAwake": true,
+      "hasKids": true,
+      "isHungry": true
     }
   ]
 }

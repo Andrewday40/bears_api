@@ -6,7 +6,7 @@ function Bear(size, type, location, id){
   this.size = size;
   this.type = type;
   this.location = location;
-  this.isAwake = false;
+  this.isAwake = true;
   this.hasKids = false;
   this.isHungry = false;
 }
