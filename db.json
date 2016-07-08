@@ -1,24 +1,13 @@
 {
   "bears": [
     {
-      "id": "9517a900-2568-456a-95f3-2a684c27ba47",
-      "size": "medium and fat",
-      "color": "black and white",
-      "isAwake": false,
+      "id": "0a22433c-77ca-4e6b-a5f4-3bb98ca24794",
+      "size": "large",
+      "type": "brown",
+      "location": "town",
+      "isAwake": true,
       "hasKids": false,
-      "type": "panda",
-      "isHungry": false,
-      "notes": "eating"
-    },
-    {
-      "id": "bacf7dca-aa13-43ca-826c-e4fbaff45ea9",
-      "size": "small",
-      "color": "black",
-      "isAwake": "true",
-      "hasKids": "",
-      "type": "black",
-      "isHungry": "",
-      "notes": ""
+      "isHungry": false
     }
   ]
 }

@@ -7,6 +7,8 @@ var server = express();
 var port = process.env.PORT || 8080;
 var db = lowdb('db.json');
 
+var Bear = require('./models/bear.js');
+
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
 
@@ -27,17 +29,7 @@ server.get('/bears/:id', function(request, response){
 });
 
 server.post('/bears', function(request, response){
-  var bear = {
-    id: uuid.v4(),
-    size: request.body.size,
-    color: request.body.color,
-    isAwake: false,
-    hasKids: false,
-    type: request.body.type,
-    isHungry: false,
-    notes: request.body.notes
-  };
-
+  var bear = new Bear(request.body.size, request.body.type, request.body.location);
   var result = db.get('bears')
                  .push(bear)
                  .last()
@@ -46,18 +38,13 @@ server.post('/bears', function(request, response){
 });
 
 server.put('/bears/:id', function(request, response){
-  var updatedBearInfo = {
-    size: request.body.size,
-    color: request.body.color,
-    isAwake: request.body.isAwake,
-    hasKids: request.body.hasKids,
-    type: request.body.type,
-    isHungry: request.body.isHungry,
-    notes: request.body.notes
-  };
+  var bear = new Bear(request.body.size, request.body.type, request.body.location, request.params.id);
+  bear.updateAwake(request.body.isAwake);
+  bear.updateKids(request.body.hasKids);
+  bear.updateHungry(request.body.isHungry);
   var updatedBear = db.get('bears')
                       .find({id: request.params.id})
-                      .assign(updatedBearInfo)
+                      .assign(bear)
                       .value();
   response.send(updatedBear);
 });
